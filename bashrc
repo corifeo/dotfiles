@@ -1,19 +1,12 @@
 #!/bin/bash
-# A basically sane bash environment.
 
-# the basics
 : ${HOME=~}
 : ${LOGNAME=$(id -un)}
 : ${UNAME=$(uname)}
-
-# complete hostnames from this file
 : ${HOSTFILE=~/.ssh/known_hosts}
-
-# readline config
 : ${INPUTRC=~/.inputrc}
 
 unset MAILCHECK
-
 ulimit -S -c 0
 umask 0022
 
