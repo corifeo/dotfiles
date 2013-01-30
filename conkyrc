@@ -1,0 +1,87 @@
+# conky configuration
+background yes
+use_xft yes
+#xftfont Bitstream Vera Sans Mono:size=8
+xftfont Terminus:size=12
+xftalpha 0.8
+update_interval 2.0
+total_run_times 0
+own_window yes
+own_window_type override
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_transparent yes
+double_buffer yes
+#maximum_width 315 5
+# Minimum size of text area
+#minimum_size 280 5
+draw_shades no
+draw_outline no
+draw_borders no
+default_color white
+default_shade_color black
+default_outline_color white
+#alignment top_left
+alignment top_right
+#alignment bottom_left
+#alignment bottom_right
+gap_x 1
+gap_y 10
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+net_avg_samples 2
+override_utf8_locale no
+
+############
+## COLORS ##
+############
+# Fonts
+color0 FFFFFF
+color1 DDAA00
+color2 606060
+color3 C94000
+color5 1282E7
+color4 C6C6C6
+# Graphs
+#color5 2E96FF # CPU
+#color6 BE2707 # DISK
+#color7 FFCF5F # NETWORK
+
+
+TEXT
+$color ${exec whoami}@$nodename - $kernel on $machine
+${voffset 5}${color}System ${color4}${hr 2}
+${voffset 5}${color}Uptime:${color2} $uptime${goto 167}${color}Load:${color2} $loadavg
+${voffset 5}${cpugraph}
+${voffset 6}${color}RAM ${color2}${membar 6,120} ${color2} ${memperc}% ${color} SWAP ${color2}${swapbar 6,120} ${color2} ${swapperc}%
+
+${color}Filesystems ${hr 2}
+
+$color /       ${color #606060}${fs_used /} / ${fs_size /}    ${fs_used_perc /}%   ${fs_bar /}
+
+${color}Networking ${hr 2} 
+${if_up eth0} 
+${color #ddaa00}eth0 ${color #767676}Address:$color ${addr eth0} ${color}
+#${color #767676}${downspeedgraph eth0 32,380 A87807 FFB60B} 
+${color #767676}${downspeedgraph eth0 32,155 A87807 FFB60B} $alignr${color #767676}${upspeedgraph eth0 32,155 A87807 FFCF5F}${endif}
+${if_up eth1} 
+${color #ddaa00}eth1 ${color #767676}Address:$color ${addr eth1} ${color}
+${color #767676}${downspeedgraph eth1 32,155 A87807 FFB60B} $alignr${color #767676}${upspeedgraph eth1 32,155 A87807 FFCF5F}${endif}
+${if_up wlan0}
+${color #ddaa00}wlan0 ${color}${wireless_essid wlan0} ${color A8A8A8}(${wireless_mode wlan0})
+${color #767676}Address:$color ${addr wlan0} ${color}(${color #A8A8A8}${wireless_ap wlan0}${color})
+${color #767676}${downspeedgraph wlan0 32,155 A87807 FFB60B} $alignr${color #767676}${upspeedgraph wlan0 32,155 A87807 FFCF5F}${endif}
+${color #767676}Public IP Address:$color ${execi 3600 wget -O - http://ip.tupeux.com | tail}${color}
+
+${color}Connections ${hr 2} 
+${color #767676}Inbound Connection ${alignr} Local Service/Port
+$color${tcp_portmon 1 32767 rhost 0} ${alignr}${offset -12} ${tcp_portmon 1 32767    lservice 0}
+$color${tcp_portmon 1 32767 rhost 1} ${alignr}${offset -12} ${tcp_portmon 1 32767 lservice 1}
+$color${tcp_portmon 1 32767 rhost 2} ${alignr}${offset -12} ${tcp_portmon 1 32767 lservice 2}
+$color${tcp_portmon 1 32767 rhost 3} ${alignr}${offset -12} ${tcp_portmon 1 32767 lservice 3}
+
+${color #767676}Outbound Connection ${alignr} Remote Service/Port$color
+$color${tcp_portmon 32768 61000 rhost 0} ${alignr}${offset -12} ${tcp_portmon    32768 61000 rservice 0}
+$color${tcp_portmon 32768 61000 rhost 1}${alignr}${offset -12} ${tcp_portmon 32768 61000 rservice    1}
+$color${tcp_portmon 32768 61000 rhost 2}${alignr}${offset -12} ${tcp_portmon 32768 61000 rservice    2}
+$color${tcp_portmon 32768 61000 rhost 3}${alignr}${offset -12} ${tcp_portmon 32768 61000 rservice    3}

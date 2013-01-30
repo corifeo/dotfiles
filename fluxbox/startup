@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# fluxbox startup-script:
+#
+# Lines starting with a '#' are ignored.
+
+# Change your keymap:
+
+xmodmap "/home/corifeo/.Xmodmap"
+
+fbsetbg -C /usr/share/samurai-wtf/samurai-background-2.png
+
+# Applications you want to run with fluxbox.
+# MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN ''&'' AT THE END.
+#
+# unclutter -idle 2 &
+# wmnd &
+# wmsmixer -w &
+# idesk &
+
+[[ -x /usr/bin/xcompmgr ]] && (xcompmgr -c &)
+
+conky &
+vmware-user &
+
+# And last but not least we start fluxbox.
+# Because it is the last app you have to run it with ''exec'' before it.
+
+exec fluxbox
+# or if you want to keep a log:
+# exec fluxbox -log "/home/corifeo/.fluxbox/log"

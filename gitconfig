@@ -1,7 +1,9 @@
 [user]
 	name = corifeo
 	email = pietrafilosofale@gmail.com
-
+[core]
+	excludesfile = /home/corifeo/.gitignore
+	
 [alias]
 	co = checkout
 	cp = cherry-pick

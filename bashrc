@@ -1,7 +1,5 @@
 #!/bin/bash
 # A basically sane bash environment.
-#
-# Francesco Manzoni <http://francescomanzoni.com/about> (with help from the internets).
 
 # the basics
 : ${HOME=~}
@@ -16,11 +14,15 @@
 
 unset MAILCHECK
 
-# disable core dumps
 ulimit -S -c 0
-
-# default umask
 umask 0022
+
+export EDITOR=vim
+export VISUAL=vim
+export PAGER=less
+export MANPAGER=less
+export IGNOREEOF=3
+export PYTHONSTARTUP=~/.pythonrc
 
 ###################
 ## SHELL OPTIONS ##
@@ -75,109 +77,26 @@ if [ -e /bin/dircolors ]; then
 fi
 
 #############
+## HISTORY ##
+#############
+
+shopt -s histappend
+
+export HISTIGNORE="&:pwd:ls:ll:lal:[bf]g:exit:rm*:sudo rm*"
+export HISTCONTROL=erasedups
+export HISTSIZE=10000
+
+#############
 ## ALIASES ##
 #############
 
-alias ls="ls -F --color"
-alias ll="ls -hl"
-alias la="ls -a"
-
-if type -p vim >/dev/null; then
-    alias vi="vim"
-else
-    alias vim="vi"
+if [ -e ~/.bash_aliases ]; then
+  . ~/.bash_aliases
 fi
 
-###############
-## CHECKPATH ##
-###############
-
-function chkpath () {
-    if [ -d "$1" ]; then
-        export PATH=$1:$PATH
-    fi
-}
-chkpath "$HOME/bin"
-chkpath "$HOME/scripts"
-chkpath "/usr/local/bin"
-chkpath "/usr/local/sbin"
-chkpath "/opt/local/bin"
-chkpath "/opt/local/sbin"
-
-export HISTIGNORE="&:[bf]g:exit"
-export HISTCONTROL=ignoredups
-export HISTFILESIZE=10000
-export HISTSIZE=10000
-export EDITOR=vim
-export VISUAL=vim
-export PAGER=less
-export MANPAGER=less
-export IGNOREEOF=3
-export PYTHONSTARTUP=~/.pythonrc
-
-# grep colors
-export GREP_OPTIONS='--color=auto'
-export GREP_COLOR='1;32'
-
-#####################
-## EXTRA FUNCTIONS ##
-#####################
-
-function mkcd() { mkdir "$1" && cd "$1"; }
-function calc(){ awk "BEGIN{ print $* }" ;}
-function hex2dec { awk 'BEGIN { printf "%d\n",0x$1}'; }
-function dec2hex { awk 'BEGIN { printf "%x\n",$1}'; }
-function mktar() { tar czf "${1%%/}.tar.gz" "${1%%/}/"; }
-function mkmine() { sudo chown -R ${USER} ${1:-.}; }
-function rot13 () { echo "$@" | tr a-zA-Z n-za-mN-ZA-M; }
-function :h () {  vim -c "silent help $@" -c "only"; }
-function gril () { grep -rl "$@" *; }
-function grepword () { grep -Hnr "$@" *; }
-function vimf () { vim -c "ScratchFind" -c "only"; }
-function vimg () { vim -c "ScratchFind 'grep -rl \"$@\" *'" -c "only"; }
-function vfind () { vim -p $(find . -name '$@'); }
-
-# push SSH public key to another box
-function sendkey () {
-    if [ $# -eq 1 ]; then
-        local key=""
-        if [ -f ~/.ssh/id_dsa.pub ]; then
-            key=~/.ssh/id_dsa.pub
-        elif [ -f ~/.ssh/id_rsa.pub ]; then
-            key=~/.ssh/id_rsa.pub
-        else
-            echo "No public key found" >&2
-            return 1
-        fi
-        ssh $1 'cat >> ~/.ssh/authorized_keys' < $key
-    fi
-}
-
-function syncdirs () {
-    if [ $# -ne 2 ]; then
-        echo "usage: syncdirs src dest" >&2
-    else
-        rsync -rtlpvH --safe-links --delete-after "$1" "$2"
-    fi
-}
-
-#####################
-## REMOTE TERMINAL ##
-#####################
-
-if [ "$TERM_PROGRAM" = "Apple_Terminal" -a "$TERM" = "vt100" ];then
-    export TERM="screen"
-fi
-
-# Different colors for remote server
-if [ -z "$SSH_TTY" ]; 
-then PS1="\[\033[36m\]\u\[\033[37m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]$ "
-else PS1="\[\033[35m\]\u\[\033[37m\]@\[\033[31m\]\h:\[\033[34;1m\]\w\[\033[m\]$ "
-fi
-
-#####################
-## BASH-COMPLETION ##
-#####################
+#######################
+## BASH COMPLETITION ##
+#######################
 
 if [ -e /opt/local/etc/bash_completion ]; then
     . /opt/local/etc/bash_completion
@@ -186,6 +105,18 @@ fi
 if [ -e /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
+
+#####################
+## REMOTE TERMINAL ##
+#####################
+
+# Different colors for remote server
+if [ -z "$SSH_TTY" ]; then 
+   	PS1="\[\033[36m\]\u\[\033[37m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]$ "
+else 
+	PS1="\[\033[35m\]\u\[\033[37m\]@\[\033[31m\]\h:\[\033[34;1m\]\w\[\033[m\]$ "
+fi
+
 
 ###############
 ## SSH-AGENT ##
