@@ -20,7 +20,7 @@ fbsetbg -C /usr/share/samurai-wtf/samurai-background-2.png
 
 [[ -x /usr/bin/xcompmgr ]] && (xcompmgr -c &)
 
-conky &
+conky -d &
 vmware-user &
 
 # And last but not least we start fluxbox.

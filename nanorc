@@ -1,31 +1,15 @@
-## Use auto-indentation
 set autoindent
-
-## Constantly display the cursor position in the status bar.
 set const
+set cut
 
-## Use cut to end of line with ^K by default
-# set cut
-
-## set multibuffer
-# set noconvert
-# set nofollow
-#set nohelp
+set multibuffer
 set nowrap
-
 set regexp
 set smooth
-# set suspend
 set tabsize 8
 
-## Save automatically on exit, don't prompt
-# set tempfile
-
-## Disallow file modification, why would you want this in an rc file? ;)
-# set view
-
 ## COLORS!
-syntax "shellscript" "\.sh$" "\.?profile$" "\.?bashrc$" "\.?cshrc$" "^rc\..*"  "\.?akefile$" 
+syntax "shellscript" "\.sh$" "\.?profile$" "\.?bashrc$" "\.?cshrc$" "^rc\..*"  "\.?akefile$"
 	color brightblue "\<(case|do|done|elif|else|esac|exit|fi|for|function|if|in|local|read|return|select|shift|then|time|until|while)\>"
 	color white "(\{|\}|\(|\)|\;|\]|\[|`|\\|<|>|!|=|&|\|)"   
 	color brightcyan "`(\\.|[^`])*`"
