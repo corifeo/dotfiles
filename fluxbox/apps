@@ -52,3 +52,12 @@
   [Maximized]	{yes}
   [Close]	{yes}
 [end]
+[app] (name=zenmap) (class=Zenmap)
+  [Workspace]	{1}
+  [Dimensions]	{680 739}
+  [Position]	(UPPERLEFT)	{684 0}
+[end]
+[app] (name=sun-awt-X11-XFramePeer) (class=org-parosproxy-paros-Paros)
+  [Workspace]	{2}
+  [Maximized]	{yes}
+[end]
