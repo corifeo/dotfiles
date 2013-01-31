@@ -1,9 +1,9 @@
 set autoindent
 set const
-set cut
+#set cut
 
 set multibuffer
-set nowrap
+#set nowrap
 set regexp
 set smooth
 set tabsize 8

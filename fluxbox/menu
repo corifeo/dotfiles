@@ -1,3 +1,216 @@
-[begin] (fluxbox)
-[include] (~/.fluxbox/fluxbox-menu)
+[begin] (Samurai WTF) 
+[submenu] (Terminal Emulators) {} </usr/share/pixmaps/gnome-terminal.xpm>
+ [exec] (Gnome Terminal) {/usr/bin/gnome-terminal} </usr/share/pixmaps/gnome-terminal.xpm>
+ [exec] (Terminal) {x-terminal-emulator} </usr/share/pixmaps/gnome-terminal.xpm>
+ [exec] (Root Terminal) {/usr/bin/gksu -u root /usr/bin/x-terminal-emulator} </usr/share/pixmaps/gksu-debian.xpm>
+ [exec] (XTerm) {xterm} </usr/share/pixmaps/xterm-color_32x32.xpm>
+ [exec] (XTerm (Unicode\)) {uxterm} </usr/share/pixmaps/xterm-color_32x32.xpm>
+ [end]
+[submenu] (Web Browsing) {}  <~/.fluxbox/icons/applications-internet.png>
+ [exec] (Chromium) {chromium-browser} </usr/share/pixmaps/chromium-browser.png>
+ [exec] (Chromium Temporary Profile)  {/usr/bin/chromium-browser --temp-profile}  </usr/share/pixmaps/chromium-browser.png>
+ [exec] (Firefox) {firefox} </usr/share/pixmaps/firefox.png>
+[end]
+[submenu]  (Samurai)  <~/.fluxbox/icons/applications-other.png>
+ [submenu] (Mapping)
+  [submenu] (Interception)
+   [exec]  (Burp Suite Free)  {burpsuite}  </usr/share/burpsuite/media/icon16.png>
+   [exec]  (Burp Suite Pro)  {burpsuite-pro}  </usr/share/burpsuite/media/icon16.png>
+   [exec]  (Paros)  {paros}  </usr/share/pixmaps/gksu.png>
+   [exec]  (Zed Attack Proxy)  {zap}  </usr/share/zap/zap.png> 
+  [end]
+  [submenu] (Spider)
+   [exec]  (WebHTTrack Website Copier)  {webhttrack}  </usr/share/httrack/icons/webhttrack.xpm>
+   [exec]  (Browse Mirrored Websites)  {webhttrack browse}  </usr/share/httrack/icons/webhttrack.xpm>
+  [end]
+  [submenu] (Portscanning)
+   [exec]  (Zenmap)  {zenmap}  </usr/share/zenmap/pixmaps/zenmap.png>
+   [exec]  (Zenmap as Root)  {gksu zenmap}  </usr/share/zenmap/pixmaps/zenmap.png>
+  [end]
+  [submenu] (Fingerprinting)
+   [exec]  (nikto)  {xterm -e 'samurai nikto examples; bash'}  </usr/share/pixmaps/gksu.png>
+  [end]
+  [submenu] (Webservices)
+   [exec]  (soapUI-4.5.0)  {/bin/sh "/usr/local/SmartBear/soapUI-4.5.0/bin/soapUI-4.5.0"}  </usr/local/SmartBear/soapUI-4.5.0/.install4j/soapUI-4.5.0.png>
+   [exec]  (WSFuzzer)  {term -e 'samurai wsfuzzer examples; bash'}  </usr/share/pixmaps/gksu.png>
+  [end]
+ [end]
+ [separator] (--------)
+ [submenu] (Discovery)
+  [submenu] (Wordlists)
+   [exec]  (FuzzDB)  {thunar /usr/share/doc/fuzzdb}  </usr/share/pixmaps/gksu.png>
+   [exec]  (Raft Wordlists)  {thunar /usr/share/raft/data/wordlists}  </usr/share/pixmaps/gksu.png>
+   [exec]  (SVNDigger)  {thunar /usr/share/doc/svndigger}  </usr/share/pixmaps/gksu.png>
+  [end]
+  [submenu] (Fuzzers)
+   [exec]  (DirBuster)  {dirbuster}  </usr/share/pixmaps/gksu.png>
+   [exec]  (JBroFuzz)  {jbrofuzz}  </usr/share/pixmaps/gksu.png>
+   [exec]  (Raft)  {raft}  </usr/share/pixmaps/gksu.png>
+  [end]
+  [exec]  (Grendel Scan)  {grendelscan}  </usr/share/pixmaps/gksu.png>
+  [exec]  (DaemonLogger)  {samurai daemonlogger examples; bash}  </usr/share/pixmaps/gksu.png>
+  [exec]  (FlawFinder)  {samurai flawfinder examples; bash}  </usr/share/pixmaps/gksu.png>
+  [exec]  (Scapy)  {scapy}  </usr/share/pixmaps/gksu.png>
+  [exec]  (w3af)  {/usr/share/w3af/w3af_gui}  </usr/share/pixmaps/w3af.xpm>
+  [exec]  (Wireshark)  {gksu wireshark}  </usr/share/icons/hicolor/48x48/apps/wireshark.png>
+  [exec]  (Yokoso!)  {thunar /usr/share/doc/yokoso}  </usr/share/pixmaps/gksu.png>
+ [end]
+ [submenu] (Exploitation)
+  [submenu] (Payloads)
+   [exec]  (AjaxShell)  {thunar /usr/share/doc/ajaxshell}  </usr/share/pixmaps/gksu.png>
+   [exec]  (Laudanum)  {thunar /usr/share/doc/fuzzdb}  </usr/share/pixmaps/gksu.png>
+   [exec]  (PHPShell)  {thunar /usr/share/doc/phpshell}  </usr/share/pixmaps/gksu.png>
+  [end]
+  [exec]  (Armitage)  {gksu armitage}  </usr/share/metasploit/icons/armitage.png>
+  [exec]  (MetaSploit Console)  {gksu msfconsole; bash}  </usr/share/metasploit/icons/metasploit.png>
+  [exec]  (MetaSploit GUI)  {gksu msfgui}  </usr/share/metasploit/img/msfgui.png>
+  [exec]  (Johnny) {johnny} </usr/share/icons/gnome/16x16/status/dialog-password.png>
+
+  [exec]  (Skipfish)  {xterm -fg white -bg black -e 'read -p "Which url would you like to actively scan/attack with Skipfish?  Please include http:// or https:// in the url. " URL && skipfish -o ~/Tool-Output/Skipfish/`date +%Y%m%d-%T` $URL'}  </usr/share/pixmaps/gksu.png>
+  [exec]  (XHydra)  {xhydra %F}  </usr/share/pixmaps/xhydra.xpm>
+ [end]
+ [separator] (--------)
+ [submenu] (Targets)
+  [exec]  (Damn Vulnerable Web App)  {sensible-browser http://dvwa}  </usr/share/pixmaps/firefox.png>
+  [exec]  (Dojo-Basic)  {sensible-browser http://dojo-basic}  </usr/share/pixmaps/firefox.png>
+  [exec]  (Dojo-Scavenger)  {sensible-browser http://dojo-scavenger}  </usr/share/pixmaps/firefox.png>
+  [exec]  (Fierce)  {samurai fierce examples; bash}  </usr/share/pixmaps/firefox.png>
+  [exec]  (Mutillidae)  {sensible-browser http://mutillidae}  </usr/share/pixmaps/firefox.png>
+  [exec]  (VulnScripts)  {sensible-browser http://vulnscripts}  </usr/share/pixmaps/firefox.png>
+  [exec]  (WebGoat)  {sensible-browser http://webgoat}  </usr/share/pixmaps/firefox.png>
+ [end]
+ [separator] (--------)
+[end]
+[separator] (--------)
+[submenu]  (Accessories)  <~/.fluxbox/icons/applications-accessories.png>
+ [exec]  (Archive Manager)  {file-roller %U}  </usr/share/pixmaps/file-roller.xpm>
+ [exec]  (Backup)  {deja-dup --backup}  </usr/share/icons/hicolor/48x48/apps/deja-dup.png>
+ [exec]  (Calculator)  {gcalctool}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Character Map)  {gucharmap}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Contacts)  {gnome-contacts}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Disk Utility)  {palimpsest}  </usr/share/icons/hicolor/48x48/apps/palimpsest.png>
+ [exec]  (Midnight Commander)  {mc}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Onboard)  {onboard}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Orca)  {orca --replace}  </usr/share/icons/hicolor/48x48/apps/orca.png>
+ [exec]  (Root Terminal)  {gksu /usr/bin/x-terminal-emulator}  </usr/share/pixmaps/gksu-root-terminal.png>
+ [exec]  (Take a Screenshot of a Selected Area)  {gnome-screenshot -a}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Time & Date)  {gnome-control-center indicator-datetime}  </usr/share/icons/hicolor/48x48/apps/preferences-system-time.png>
+ [exec]  (xdiagnose)  {xdiagnose}  </usr/share/xdiagnose/icons/microscope.svg>
+ [exec] (Xclipboard) {xclipboard} <>
+ [exec] (Xfontsel) {xfontsel} <>
+ [exec] (Xkill) {xkill} <>
+ [exec] (Xrefresh) {xrefresh} <>   
+[end]
+[submenu] (Editors)
+  [exec](nano) {xterm -maximized -e nano}
+  [exec](pico) {xterm -maximized -e pico}
+  [exec](vi) {xterm -maximized -e vim}
+  [exec](Xedit) {xedit} <>
+  [exec](Gedit) {gedit} <>
+ [end]
+[submenu]  (Graphics)  <~/.fluxbox/icons/applications-graphics.png>
+ [exec]  (Document Viewer)  {evince %U}  </usr/share/pixmaps/evince.xpm>
+ [exec]  (Feh)  {feh}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Image Viewer)  {eog %U}  </usr/share/pixmaps/gnome-eog.xpm>
+ [exec]  (Simple Scan)  {simple-scan}  <~/.fluxbox/icons/application-default-icon.png>
+[end]
+[submenu] (File Management) {}
+ [exec] (Nautilus) {nautilus --no-desktop --browser} </usr/share/pixmaps/nautilus.xpm>
+ [exec] (Baobab) {/usr/bin/baobab} </usr/share/pixmaps/baobab.xpm>
+ [exec] (File-Roller) {/usr/bin/file-roller} </usr/share/pixmaps/file-roller.xpm>
+ [exec] (mc) { x-terminal-emulator -T "mc" -e /usr/bin/mc} </usr/share/pixmaps/mc.xpm>
+[end]
+[submenu]  (Internet)  <~/.fluxbox/icons/applications-internet.png>
+ [exec]  (Contacts)  {thunderbird -addressbook}  </usr/share/pixmaps/thunderbird.png>
+ [exec]  (Desktop Sharing)  {vino-preferences}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Gwibber)  {gwibber %U}  </usr/share/icons/hicolor/48x48/apps/gwibber.png>
+ [exec]  (IcedTea Java Web Start)  {/usr/bin/javaws %u}  </usr/share/icons/hicolor/48x48/apps/javaws.png>
+ [exec]  (Open Accounts)  {empathy-accounts}  </usr/share/icons/hicolor/48x48/apps/empathy.png>
+ [exec]  (Start Remmina Minimized)  {remmina --icon}  </usr/share/icons/hicolor/48x48/apps/remmina.png>
+ [exec]  (Start Transmission Minimized)  {transmission-gtk --minimized}  </usr/share/pixmaps/transmission.png>
+[end]
+[submenu]  (Office)  <~/.fluxbox/icons/applications-office.png>
+ [exec]  (LibreOffice )  {libreoffice %U}  </usr/share/icons/hicolor/48x48/apps/libreoffice-startcenter.png>
+ [exec]  (New Document)  {libreoffice --writer %U}  </usr/share/icons/hicolor/48x48/apps/libreoffice-writer.png>
+ [exec]  (New Formula)  {libreoffice --math %U}  </usr/share/icons/hicolor/48x48/apps/libreoffice-math.png>
+ [exec]  (New Presentation)  {libreoffice --impress %U}  </usr/share/icons/hicolor/48x48/apps/libreoffice-impress.png>
+ [exec]  (New Spreadsheet)  {libreoffice --calc %U}  </usr/share/icons/hicolor/48x48/apps/libreoffice-calc.png>
+[end]
+[submenu]  (Others)  <~/.fluxbox/icons/applications-other.png>
+ [exec]  (Adobe Flash Player)  {flash-player-properties}  </usr/share/pixmaps/flash-player-properties.png>
+ [exec]  (Appearance)  {gnome-control-center background}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Brightness and Lock)  {gnome-control-center screen}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Broadcast Accounts)  {gwibber-accounts}  </usr/share/icons/hicolor/48x48/apps/gwibber.png>
+ [exec]  (Broadcast Preferences)  {gwibber-preferences}  </usr/share/icons/hicolor/48x48/apps/gwibber.png>
+ [exec]  (Color)  {gnome-control-center color}  </usr/share/icons/hicolor/48x48/apps/preferences-color.png>
+ [exec]  (Date and Time)  {gnome-control-center datetime}  </usr/share/icons/hicolor/48x48/apps/preferences-system-time.png>
+ [exec]  (Details)  {gnome-control-center info}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Displays)  {gnome-control-center display}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (IcedTea Web Control Panel)  {/usr/bin/itweb-settings}  </usr/share/icons/hicolor/48x48/apps/javaws.png>
+ [exec]  (Input Method Switcher)  {im-switch}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Keyboard)  {gnome-control-center keyboard}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Keyboard Input Methods)  {ibus-setup}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Keyboard Layout)  {gnome-control-center region}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Language Support)  {/usr/bin/gnome-language-selector}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Main Menu)  {alacarte}  </usr/share/icons/hicolor/48x48/apps/alacarte.png>
+ [exec]  (Management Service)  {landscape-client-ui-install}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Messaging and VoIP Accounts)  {empathy-accounts}  </usr/share/icons/hicolor/48x48/apps/empathy.png>
+ [exec]  (Mouse and Touchpad)  {gnome-control-center mouse}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Multimedia Systems Selector)  {gstreamer-properties}  </usr/share/icons/hicolor/48x48/apps/gstreamer-properties.png>
+ [exec]  (Network)  {gnome-control-center network}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Network Connections)  {nm-connection-editor}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Onboard Settings)  {onboard-settings}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Online Accounts)  {gnome-control-center online-accounts}  </usr/share/icons/hicolor/48x48/apps/goa-panel.png>
+ [exec]  (OpenJDK Java 6 Policy Tool)  {/usr/bin/policytool}  </usr/share/pixmaps/openjdk-6.xpm>
+ [exec]  (OpenJDK Java 7 Policy Tool)  {/usr/bin/policytool}  </usr/share/pixmaps/openjdk-7.xpm>
+ [exec]  (Passwords and Keys)  {seahorse}  </usr/share/icons/hicolor/48x48/apps/seahorse.png>
+ [exec]  (Personal File Sharing)  {gnome-file-share-properties}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Power)  {gnome-control-center power}  </usr/share/icons/hicolor/48x48/apps/gnome-power-manager.png>
+ [exec]  (Software Sources)  {software-properties-gtk}  </usr/share/icons/hicolor/48x48/apps/software-properties.png>
+ [exec]  (Sound)  {gnome-control-center sound-nua}  </usr/share/icons/hicolor/48x48/apps/multimedia-volume-control.png>
+ [exec]  (Sound)  {gnome-control-center sound}  </usr/share/icons/hicolor/48x48/apps/multimedia-volume-control.png>
+ [exec]  (Startup Applications)  {gnome-session-properties}  </usr/share/icons/hicolor/48x48/apps/session-properties.png>
+ [exec]  (Universal Access)  {gnome-control-center universal-access}  <~/.fluxbox/icons/application-default-icon.png>
+[end]
+[submenu]  (Programming)  <~/.fluxbox/icons/applications-development.png>
+ [exec]  (Geany)  {geany}  </usr/share/pixmaps/geany.xpm>
+ [exec]  (IDLE)  {/usr/bin/idle -n}  </usr/share/pixmaps/idle.xpm>
+ [exec]  (IDLE (using Python-2.7))  {/usr/bin/idle-python2.7 -n}  </usr/share/pixmaps/python2.7.xpm>
+ [exec]  (IDLE (using Python-3.2))  {/usr/bin/idle-python3.2 -n}  </usr/share/pixmaps/python3.2.xpm> 
+ [exec]  (IDLE 3)  {/usr/bin/idle3 -n}  </usr/share/pixmaps/idle3.xpm>
+ [exec]  (ipython)  {ipython}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (PyCrust)  {/usr/bin/pycrust}  </usr/share/pixmaps/pycrust>
+ [exec]  (Pylab (inline plots))  {ipython qtconsole --pylab}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Python (v2.7))  {/usr/bin/python2.7}  </usr/share/pixmaps/python2.7.xpm>
+ [exec]  (Python (v3.2))  {/usr/bin/python3.2}  </usr/share/pixmaps/python3.2.xpm>
+ [exec]  (XRCed)  {/usr/bin/xrced}  </usr/share/pixmaps/xrced>
+[end]
+[submenu]  (System Tools)  <~/.fluxbox/icons/applications-system.png>
+ [exec]  (AptURL)  {apturl %u}  </usr/share/pixmaps/gksu.png>
+ [exec]  (Back Up Now)  {deja-dup --backup}  </usr/share/icons/hicolor/48x48/apps/deja-dup.png>
+ [exec]  (CD/DVD Creator)  {nautilus --no-default-window --no-desktop burn:/// }  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Disk Usage Analyzer)  {baobab}  </usr/share/pixmaps/baobab.xpm>
+ [exec]  (IBus)  {ibus-daemon --xim}  </usr/share/icons/hicolor/48x48/apps/ibus-keyboard.png>
+ [exec]  (Log File Viewer)  {gnome-system-log}  </usr/share/icons/hicolor/48x48/apps/logview.png>
+ [exec]  (Network Tools)  {gnome-nettool}  </usr/share/pixmaps/gnome-nettool.xpm>
+ [exec]  (Panel)  {gnome-panel}  </usr/share/icons/hicolor/48x48/apps/gnome-panel.png> 
+ [exec]  (Power Statistics)  {gnome-power-statistics}  </usr/share/icons/hicolor/48x48/apps/gnome-power-statistics.png>
+ [exec]  (Printing)  {system-config-printer}  </usr/share/icons/hicolor/48x48/apps/libreoffice-printeradmin.png>
+ [exec]  (Privacy)  {gnome-control-center activity-log-manager}  </usr/share/icons/hicolor/48x48/apps/activity-log-manager.svg>
+ [exec]  (Remastersys)  {gksu remastersys-gtk}  </usr/share/pixmaps/remastersys-gtk.png>
+ [exec]  (Startup Disk Creator)  {usb-creator-gtk}  <~/.fluxbox/icons/application-default-icon.png> 
+ [exec]  (System Monitor)  {gnome-system-monitor}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (System Settings)  {gnome-control-center --overview}  </usr/share/icons/hicolor/48x48/apps/preferences-system-time.png>
+ [exec]  (System Testing)  {/usr/bin/checkbox-qt}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (Ubuntu Software Center)  {/usr/bin/software-center %u}  </usr/share/icons/hicolor/48x48/apps/softwarecenter.svg>
+ [exec]  (Update Manager)  {/usr/bin/update-manager}  <~/.fluxbox/icons/application-default-icon.png>
+ [exec]  (User Accounts)  {gnome-control-center user-accounts}  <~/.fluxbox/icons/application-default-icon.png>
+[end]
+[separator] (tag end)
+[workspaces] (Workspaces)
+[config] (Fluxbox Menu)
+[reconfig] (Reload Config)
+[exec] (Restart Conky) {killall -HUP conky}
+[restart] (Restart Fluxbox)
+[exit] (Exit) 
 [end]

@@ -3,47 +3,52 @@
   [Deco]	{BORDER}
   [Layer]	{2}
 [end]
-
 [group]  (workspace=[current])
-  [app] (role=HUD)
+ [app] (role=HUD)
   [Position]	(UPPERLEFT)	{0 0}
   [Deco]	{NONE}
   [Maximized]	{horz}
   [Layer]	{8}
   [Alpha]	{220 150}
 [end]
-
 [group]  (workspace=[current])
-  [app] (class=browser)
+ [app] (class=browser)
   [Maximized]	{yes}
 [end]
-
 [app] (class=Mail|Thunderbird)
 [end]
-
 [group]  (workspace=[current])
-  [app] (class=.*[Tt]erm.*)
+ [app] (class=.*[Tt]erm.*)
   [Maximized]	{yes}
 [end]
-
 [group]  (workspace=[current])
-  [app] (role=conversation)
+ [app] (role=conversation)
   [Position]	(UPPERRIGHT)	{0 0}
   [Sticky]	{yes}
   [Alpha]	{255 190}
 [end]
-
 [group]  (workspace=[current])
-  [app] (role=buddy_list)
+ [app] (role=buddy_list)
   [Dimensions]	{277 527}
   [Position]	(LOWERRIGHT)	{0 0}
   [Alpha]	{255 190}
 [end]
-
 [group]  (workspace=[current])
-  [app] (class=[GgKk]vim|[Xx]emacs|[Gg]edit)
+ [app] (class=[GgKk]vim|[Xx]emacs|[Gg]edit)
   [Dimensions]	{692 750}
   [Position]	(UPPERRIGHT)	{0 0}
   [Maximized]	{vert}
 [end]
-
+[app] (name=sun-awt-X11-XFramePeer) (class=burp-StartBurp)
+  [Workspace]	{2}
+  [Maximized]	{yes}
+[end]
+[app] (name=johnny) (class=Johnny)
+  [Workspace]	{2}
+  [Maximized]	{yes}
+[end]
+[app] (name=sun-awt-X11-XFramePeer) (class=org-zaproxy-zap-ZAP)
+  [Workspace]	{2}
+  [Maximized]	{yes}
+  [Close]	{yes}
+[end]

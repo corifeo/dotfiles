@@ -29,7 +29,7 @@ window.font:					Ubuntu-10
 
 menu.bevelWidth:				1
 
-#menu.itemHeight:				35
+menu.itemHeight:				24
 #menu.titleHeight:				21
 menu.borderColor:				#525252
 menu.borderWidth:				1
