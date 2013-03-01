@@ -61,3 +61,13 @@
   [Workspace]	{2}
   [Maximized]	{yes}
 [end]
+[app] (name=yersinia) (class=Yersinia)
+  [Workspace]	{3}
+  [Deco]	{NORMAL}
+  [Maximized]	{yes}
+  [Close]	{yes}
+[end]
+[app] (name=ettercap) (class=Ettercap)
+  [Workspace]	{3}
+  [Maximized]	{yes}
+[end]
